@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 // Starter Code for TextEditorApp
 // chales 10/2025
+//
 public class FindAndReplace {
     private JFrame frame;
     private JTextField smallTextRegion;
