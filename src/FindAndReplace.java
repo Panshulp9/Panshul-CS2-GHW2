@@ -12,9 +12,9 @@ import java.util.Scanner;
 // chales 10/2025
 //
 public class FindAndReplace {
-    private JFrame frame;
-    private JTextField smallTextRegion;
-    private JTextArea textArea;
+    private JFrame frame; // mainframe
+    private JTextField smallTextRegion; //the typable area
+    private JTextArea textArea; // the area that displays the airport and city
 
     public FindAndReplace() {
         frame = new JFrame("Find and Replace Application");
@@ -31,8 +31,8 @@ public class FindAndReplace {
 
 
         JPanel controlPanel = new JPanel(new FlowLayout());
-        frame.add(panel, BorderLayout.CENTER);
-        frame.add(controlPanel, BorderLayout.SOUTH);
+        frame.add(panel, BorderLayout.CENTER); // add the panel with text area to frame
+        frame.add(controlPanel, BorderLayout.SOUTH); // add the typable region panel to the frame
 
         smallTextRegion = new JTextField(20);
 
@@ -45,7 +45,7 @@ public class FindAndReplace {
         JButton findAirport = new JButton("Find Airport");
         JLabel instructionLabel = new JLabel("Type city in text box");
 
-        //this made buttons on screen
+        //this made buttons on screen and adds the action listener on the buttons that are waiting for a command
         controlPanel.add(smallTextRegion);
         submitButton.addActionListener(new ButtonClickListener());
         resetButton.addActionListener(new ButtonClickListener());
@@ -59,7 +59,7 @@ public class FindAndReplace {
 
     }
 
-
+// this listens to the command (button) and the city in the typed area to spit out the correct information
     private class ButtonClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
@@ -135,10 +135,14 @@ public class FindAndReplace {
                 textArea.append(" Sydney - Sydney International Airport (SYD)");
             }
             else if(city.equalsIgnoreCase("Buenos Aires")&& command.equals("Find Airport")){
-                textArea.append(" Buenos Aires- Ezeiza International Airport (EZE)");
+                textArea.append(" Buenos Aires - Ezeiza International Airport (EZE)");
             }
-            else {
-                textArea.append("Airport not found.");
+            else if (city.equalsIgnoreCase("Cairo") && command.equals("Find Airport")){
+                textArea.append(" Cairo - Cairo International Airport");
+            }
+            //the else is for any other city that is not in the list I made
+            else if (command.equals("Find Airport")){
+                textArea.append("Airport not found");
             }
         }
     }
